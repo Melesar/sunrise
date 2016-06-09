@@ -1,19 +1,20 @@
 #pragma once
 
 #include <memory>
-#include <cassert>
 #include <bitset>
 #include <array>
-#include "Component.h"
 #include <vector>
+
+class Scene;
+class Component;
 
 class GameObject
 {
 public:
 
-	template<class TComponentType, class... TArgs> TComponentType& AddComponent(TArgs&&... args);
-	template<class TComponentType>				   TComponentType& GetComponent();
-	template<class TComponentType>				   bool			   HasComponent();
+	template<class TComponentType, typename... TArgs> TComponentType& AddComponent(TArgs&&... args);
+	template<class TComponentType>				      TComponentType& GetComponent();
+	template<class TComponentType>				      bool			  HasComponent();
 
 	bool IsActive() const;
 	void SetActive(bool value);

@@ -1,4 +1,7 @@
 #include "GameObject.h"
+#include "Component.h"
+#include "../Components/Transform.h"
+#include "../Components/Mesh.h"
 
 
 bool GameObject::IsActive() const
@@ -25,6 +28,7 @@ void GameObject::SendMessage(const std::string& message)
 
 GameObject::GameObject()
 {
+	AddComponent<Transform>();
 }
 
 
@@ -32,7 +36,7 @@ GameObject::~GameObject()
 {
 }
 
-template <class TComponentType, class... TArgs>
+template <class TComponentType, typename... TArgs>
 TComponentType& GameObject::AddComponent(TArgs&&... args)
 {
 	assert(!HasComponent<TComponentType>());

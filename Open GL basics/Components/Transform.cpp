@@ -14,3 +14,11 @@ glm::mat4 Transform::GetModelMatrix() const
 
 	return posMatrix * rotMatrix * scaleMatrix;
 }
+
+void Transform::Init()
+{
+}
+
+void Transform::Update()
+{
+}

@@ -1,2 +1,10 @@
 ﻿  main.cpp
-  Open GL basics.vcxproj -> C:\Users\serge_000\documents\visual studio 2015\Projects\Open GL basics\Debug\Open GL basics.exe
+c:\users\serge_000\documents\visual studio 2015\projects\open gl basics\open gl basics\main.cpp(9): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Scene.cpp
+  Generating Code...
+  Compiling...
+  GameObject.cpp
+  Component.cpp
+  Generating Code...
+Scene.obj : error LNK2019: unresolved external symbol "public: class Mesh & __thiscall GameObject::AddComponent<class Mesh,char const (&)[18]>(char const (&)[18])" (??$AddComponent@VMesh@@AAY0BC@$$CBD@GameObject@@QAEAAVMesh@@AAY0BC@$$CBD@Z) referenced in function "public: __thiscall Scene::Scene(void)" (??0Scene@@QAE@XZ)
+C:\Users\serge_000\documents\visual studio 2015\Projects\Open GL basics\Debug\Open GL basics.exe : fatal error LNK1120: 1 unresolved externals

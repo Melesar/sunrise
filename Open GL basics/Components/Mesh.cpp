@@ -3,8 +3,6 @@
 
 Mesh::Mesh(Vertex* vertices, unsigned int numVertices, unsigned int* indices, unsigned int numIndices)
 {
-	IndexedModel model;
-
 	for (int i = 0; i < numVertices; i++)
 	{
 		model.positions.push_back(vertices[i].GetPos());
@@ -16,14 +14,11 @@ Mesh::Mesh(Vertex* vertices, unsigned int numVertices, unsigned int* indices, un
 	{
 		model.indices.push_back(indices[i]);
 	}
-
-	InitMesh(model);
 }
 
 Mesh::Mesh(const std::string& fileName)
 {
-	IndexedModel model = OBJModel(fileName).ToIndexedModel();
-	InitMesh(model);
+	model = OBJModel(fileName).ToIndexedModel();
 }
 
 Mesh::~Mesh()
@@ -32,7 +27,7 @@ Mesh::~Mesh()
 	glDeleteVertexArrays(1, &vertexArrayObject);
 }
 
-void Mesh::Draw()
+void Mesh::Update()
 {
 	glBindVertexArray(vertexArrayObject);
 
@@ -47,7 +42,7 @@ void Mesh::Draw()
 	glBindVertexArray(0);
 }
 
-void Mesh::InitMesh(const IndexedModel& model)
+void Mesh::Init()
 {
 	drawCount = model.indices.size();
 

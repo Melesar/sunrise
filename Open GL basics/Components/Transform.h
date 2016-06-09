@@ -1,8 +1,9 @@
 ﻿#pragma once
 
 #include "glm/glm.hpp"
+#include "../Component model/Component.h"
 
-class Transform
+class Transform : public Component
 {
 public:
 	Transform(const glm::vec3& pos = glm::vec3(), const glm::vec3& rot = glm::vec3(),
@@ -11,6 +12,10 @@ public:
 
 	glm::mat4 GetModelMatrix() const;
 
+
+	void Init() override;
+
+	void Update() override;
 
 	glm::vec3& position()
 	{

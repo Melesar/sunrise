@@ -27,6 +27,11 @@ void Component::SetGameObject(GameObject* gameObject)
 
 void Component::RecieveMessage(const std::string& message)
 {
+	if (messages.find(message) == messages.end()) {
+		return;
+	}
+
+	messages[message]();
 }
 
 void Component::SubscribeToMessage(const std::string& message, MessageReceiver receiver)

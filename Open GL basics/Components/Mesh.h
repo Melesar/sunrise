@@ -3,7 +3,7 @@
 #include "glm/glm.hpp"
 #include "GL/glew.h"
 #include "../Utilites/obj_loader.h"
-#include <string>
+#include "../Component model/Component.h"
 
 class Vertex
 {
@@ -36,20 +36,19 @@ private:
 	glm::vec3 normal;
 };
 
-class Mesh
+class Mesh : public Component
 {
 public:
 	Mesh(Vertex* vertices, unsigned int numVertices, unsigned int* indices, unsigned int numIndices);
 	Mesh(const std::string& fileName);
 	virtual ~Mesh();
 
-	void Draw();
+	void Update() override;
+	void Init() override;
 
 private:
 	Mesh(const Mesh& other);
 	void operator = (const Mesh& other);
-
-	void InitMesh(const IndexedModel& model);
 
 	enum
 	{
@@ -61,7 +60,10 @@ private:
 		NUM_BUFFERS
 	};
 
+	IndexedModel model;
+
 	GLuint vertexArrayObject;
 	GLuint vertexArrayBuffers[NUM_BUFFERS];
+
 	unsigned int drawCount;
 };

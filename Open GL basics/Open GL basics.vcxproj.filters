@@ -40,6 +40,9 @@
     <ClCompile Include="Component model\Component.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Component model\Scene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Display.h" />
@@ -52,5 +55,6 @@
     <ClInclude Include="Data\Texture.h" />
     <ClInclude Include="Component model\GameObject.h" />
     <ClInclude Include="Component model\Component.h" />
+    <ClInclude Include="Component model\Scene.h" />
   </ItemGroup>
 </Project>
