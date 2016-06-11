@@ -33,7 +33,7 @@ Shader::Shader(const std::string& fileName)
 
 	uniforms[TRANSFORM_U] = glGetUniformLocation(program, "transform");
 	uniforms[DIFFUSE_U]   = glGetUniformLocation(program, "diffuse");
-	uniforms[POT_U]		  = glGetUniformLocation(program, "pot");
+	//uniforms[POT_U]		  = glGetUniformLocation(program, "pot");
 }
 
 
@@ -55,11 +55,11 @@ void Shader::Bind()
 
 void Shader::Update(const Transform& transform, const Camera& camera)
 {
-	glm::mat4 model = camera.GetViewProjection() * transform.GetModelMatrix() ;
+	glm::mat4 model = camera.GetViewProjection() * transform.GetModelMatrix();
 	glUniformMatrix4fv(uniforms[TRANSFORM_U], 1, GL_FALSE, &model[0][0]);
 
 	glUniform1i(uniforms[DIFFUSE_U], 0);
-	glUniform1i(uniforms[POT_U], 1);
+	//glUniform1i(uniforms[POT_U], 1);
 }
 
 std::string Shader::LoadShader(const std::string& fileName)

@@ -1,4 +1,9 @@
 ﻿#include "Mesh.h"
+#include "Transform.h"
+#include "Camera.h"
+#include "../Data/Shader.h"
+#include "../Data/Texture.h"
+
 #include <vector>
 
 Mesh::Mesh(Vertex* vertices, unsigned int numVertices, unsigned int* indices, unsigned int numIndices)
@@ -29,6 +34,10 @@ Mesh::~Mesh()
 
 void Mesh::Update()
 {
+	shader->Bind();
+	texture->Bind(0);
+	shader->Update(*transform, *Camera::mainCamera);
+
 	glBindVertexArray(vertexArrayObject);
 
 	//Рисует массив вершин, определенный в предыдущей функции
@@ -38,11 +47,17 @@ void Mesh::Update()
 	//glDrawArrays(GL_TRIANGLES, 0, drawCount);
 
 	glDrawElements(GL_TRIANGLES, drawCount, GL_UNSIGNED_INT, 0);
-
+	
 	glBindVertexArray(0);
 }
 
 void Mesh::Init()
+{
+	transform = &GetComponent<Transform>();
+	BuildMesh();
+}
+
+void Mesh::BuildMesh()
 {
 	drawCount = model.indices.size();
 

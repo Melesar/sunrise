@@ -18,9 +18,9 @@ GameObject& Component::GetGameObject()
 
 void Component::SetGameObject(GameObject* gameObject)
 {
-	if (this->gameObject != nullptr) {
+	/*if (this->gameObject != nullptr) {
 		return;
-	}
+	}*/
 
 	this->gameObject = gameObject;
 }

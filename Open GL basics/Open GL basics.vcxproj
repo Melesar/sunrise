@@ -145,6 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Application.cpp" />
     <ClCompile Include="Component model\Component.cpp" />
     <ClCompile Include="Component model\Scene.cpp" />
     <ClCompile Include="Components\Camera.cpp" />
@@ -159,9 +160,11 @@
     <ClCompile Include="Components\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Application.h" />
     <ClInclude Include="Component model\Component.h" />
     <ClInclude Include="Component model\Scene.h" />
     <ClInclude Include="Components\Camera.h" />
+    <ClInclude Include="Data\Structs.h" />
     <ClInclude Include="Display.h" />
     <ClInclude Include="Components\Mesh.h" />
     <ClInclude Include="Component model\GameObject.h" />

@@ -26,7 +26,7 @@ private:
 	{
 		TRANSFORM_U,
 		DIFFUSE_U,
-		POT_U,
+		//POT_U,
 
 		NUM_UNIFORMS
 	};

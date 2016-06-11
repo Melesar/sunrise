@@ -1,7 +1,7 @@
 #version 120
 
 uniform sampler2D diffuse;
-uniform sampler2D pot;
+//uniform sampler2D pot;
 
 varying vec2 texCoord0;
 varying vec3 normal0;

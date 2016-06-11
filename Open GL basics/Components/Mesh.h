@@ -5,6 +5,10 @@
 #include "../Utilites/obj_loader.h"
 #include "../Component model/Component.h"
 
+class Transform;
+class Texture;
+class Shader;
+
 class Vertex
 {
 public:
@@ -46,9 +50,23 @@ public:
 	void Update() override;
 	void Init() override;
 
+
+	void SetShader(Shader* shader)
+	{
+		this->shader = std::shared_ptr<Shader>{ shader };
+	}
+
+	void SetTexture(Texture* texture)
+	{
+		this->texture = std::shared_ptr<Texture>{ texture };
+	}
+	
+
 private:
 	Mesh(const Mesh& other);
 	void operator = (const Mesh& other);
+
+	void BuildMesh();
 
 	enum
 	{
@@ -64,6 +82,10 @@ private:
 
 	GLuint vertexArrayObject;
 	GLuint vertexArrayBuffers[NUM_BUFFERS];
+
+	std::shared_ptr<Texture> texture;
+	std::shared_ptr<Shader>  shader;
+	Transform* transform;
 
 	unsigned int drawCount;
 };
