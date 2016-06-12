@@ -145,14 +145,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Managers\Application.cpp" />
     <ClCompile Include="Component model\Component.cpp" />
     <ClCompile Include="Component model\Scene.cpp" />
     <ClCompile Include="Components\Camera.cpp" />
-    <ClCompile Include="Display.cpp" />
     <ClCompile Include="Component model\GameObject.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Components\Mesh.cpp" />
+    <ClCompile Include="Managers\Input.cpp" />
+    <ClCompile Include="Managers\Time.cpp" />
     <ClCompile Include="Utilites\obj_loader.cpp" />
     <ClCompile Include="Data\Shader.cpp" />
     <ClCompile Include="Utilites\stb_image.c" />
@@ -160,14 +161,15 @@
     <ClCompile Include="Components\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Application.h" />
+    <ClInclude Include="Managers\Application.h" />
     <ClInclude Include="Component model\Component.h" />
     <ClInclude Include="Component model\Scene.h" />
     <ClInclude Include="Components\Camera.h" />
     <ClInclude Include="Data\Structs.h" />
-    <ClInclude Include="Display.h" />
     <ClInclude Include="Components\Mesh.h" />
     <ClInclude Include="Component model\GameObject.h" />
+    <ClInclude Include="Managers\Input.h" />
+    <ClInclude Include="Managers\Time.h" />
     <ClInclude Include="Utilites\obj_loader.h" />
     <ClInclude Include="Data\Shader.h" />
     <ClInclude Include="Utilites\stb_image.h" />
