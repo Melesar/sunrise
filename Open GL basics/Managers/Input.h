@@ -53,8 +53,9 @@ private :
 	bool mouseButtonsHold[BUTTONS_AMOUNT];
 	bool mouseButtonsReleased[BUTTONS_AMOUNT];
 
-	void HandleKeyboardInput(SDL_Event& e);
-	void HandleMouseInput(SDL_Event& e);
+	void PeekInputEvents();
+	void HandleKeyboardInput(SDL_Event* events, int count);
+	void HandleMouseInput(SDL_Event* events, int count);
 
 	void ResetKeys();
 	void ResetMouseButtons();

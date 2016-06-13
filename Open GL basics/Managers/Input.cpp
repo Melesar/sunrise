@@ -20,49 +20,64 @@ void Input::Update()
 	instance->ResetKeys();
 	instance->ResetMouseButtons();
 
-	SDL_Event e;
+	instance->PeekInputEvents();
+
+	/*SDL_Event e;
 	if (SDL_PollEvent(&e)) {
 		instance->HandleKeyboardInput(e);
 		instance->HandleMouseInput(e);
+	}*/
+}
+
+void Input::PeekInputEvents()
+{
+	SDL_Event mouseEvents[2];
+	SDL_Event keyboardEvents[2];
+
+	SDL_PumpEvents();
+	int mouseCount    = SDL_PeepEvents(mouseEvents, 2, SDL_GETEVENT, SDL_MOUSEBUTTONDOWN, SDL_MOUSEBUTTONUP);
+	int keyboardCount = SDL_PeepEvents(keyboardEvents, 2, SDL_GETEVENT, SDL_KEYDOWN, SDL_KEYUP);
+
+	HandleKeyboardInput(keyboardEvents, keyboardCount);
+	HandleMouseInput(mouseEvents, mouseCount);
+}
+
+void Input::HandleKeyboardInput(SDL_Event* events, int count)
+{
+	for (int i = 0; i < count; i++) {
+		if (events[i].type == SDL_KEYDOWN) {
+			keysPressed[mapping[events[i].key.keysym.sym]] = true;
+			keysHold[mapping[events[i].key.keysym.sym]] = true;
+		} else if (events[i].type == SDL_KEYUP) {
+			keysHold[mapping[events[i].key.keysym.sym]] = false;
+			keysReleased[mapping[events[i].key.keysym.sym]] = true;
+		}
 	}
 }
 
-void Input::HandleKeyboardInput(SDL_Event& e)
+void Input::HandleMouseInput(SDL_Event* events, int count)
 {
-	if (e.type == SDL_KEYDOWN) {
-		keysPressed[mapping[e.key.keysym.sym]] = true;
-		keysHold[mapping[e.key.keysym.sym]] = true;
-	} else if (e.type == SDL_KEYUP) {
-		keysHold[mapping[e.key.keysym.sym]] = false;
-		keysReleased[mapping[e.key.keysym.sym]] = true;
-	}
-}
+	for (int i = 0; i < count; ++i) {
+		MouseButton button;
+		switch (events[i].button.button) {
+			case SDL_BUTTON_LEFT:
+				button = Left;
+				break;
+			case SDL_BUTTON_RIGHT:
+				button = Right;
+				break;
+			case SDL_BUTTON_MIDDLE:
+				button = Middle;
+				break;
+		}
 
-void Input::HandleMouseInput(SDL_Event& e)
-{
-	if (e.type != SDL_MOUSEBUTTONDOWN && e.type != SDL_MOUSEBUTTONUP) {
-		return;
-	}
-
-	MouseButton button;
-	switch (e.button.button) {
-		case SDL_BUTTON_LEFT:
-			button = Left;
-			break;
-		case SDL_BUTTON_RIGHT:
-			button = Right;
-			break;
-		case SDL_BUTTON_MIDDLE:
-			button = Middle;
-			break;
-	}
-
-	if (e.type == SDL_MOUSEBUTTONDOWN) {
-		mouseButtonsPressed[button] = true;
-		mouseButtonsHold[button] = true;
-	} else if (e.type == SDL_MOUSEBUTTONUP) {
-		mouseButtonsReleased[button] = true;
-		mouseButtonsHold[button] = false;
+		if (events[i].type == SDL_MOUSEBUTTONDOWN) {
+			mouseButtonsPressed[button] = true;
+			mouseButtonsHold[button] = true;
+		} else if (events[i].type == SDL_MOUSEBUTTONUP) {
+			mouseButtonsReleased[button] = true;
+			mouseButtonsHold[button] = false;
+		}
 	}
 }
 
