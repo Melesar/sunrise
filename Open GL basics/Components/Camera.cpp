@@ -2,6 +2,7 @@
 #include "glm/gtx/transform.hpp"
 #include <GL/glew.h>
 #include "Transform.h"
+#include <iostream>
 
 SDL_Window*    Camera::window;
 SDL_GLContext  Camera::context;
@@ -89,6 +90,24 @@ void Camera::Update()
 {
 	SDL_GL_SwapWindow(window);
 	Clear();
+	UpdateDirections();
+}
+
+glm::vec3 Camera::ScreenToWorldCoordinates(const glm::vec2 screenCoords) const
+{
+	glm::mat4 matrix = glm::inverse(GetViewProjection());
+
+	float x = 2.0f *  screenCoords.x / static_cast<float>(cameraRect().w) - 1.0f;
+	float y = 2.0f *  screenCoords.y / static_cast<float>(cameraRect().h) - 1.0f;
+
+	glm::vec4 position = glm::vec4(x, y, 1, 1) * matrix;
+	position.w = 1.0f / position.w;
+	position.x *= position.w;
+	position.y *= position.w;
+	position.z *= position.w;
+
+
+	return glm::vec3(position.x, position.y, position.z);
 }
 
 void Camera::InitWindow()
@@ -132,4 +151,10 @@ void Camera::Clear()
 	//Заполняет окно установленным цветом
 	//GL_DEPTH_BUFFER_BIT очищает z-буффер, что бы на следующем кадре снова сортировать все заново
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+}
+
+void Camera::UpdateDirections()
+{
+	forwardDirection = gameObject->transform().forward();
+	upDirection = gameObject->transform().up();
 }

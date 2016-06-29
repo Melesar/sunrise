@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "SDL/SDL.h"
+#include <glm/detail/type_vec2.hpp>
 
 class Input
 {
@@ -36,6 +37,8 @@ public:
 	static bool MouseButtonHold(MouseButton button) { return instance->mouseButtonsHold[button]; }
 	static bool MouseButtonReleased(MouseButton button) { return instance->mouseButtonsReleased[button]; }
 
+	static glm::vec2 mouseCoords(); 
+
 private :
 	static Input* instance;
 
@@ -45,13 +48,13 @@ private :
 	//Mapping between SDL key codes and custom ones
 	unsigned int mapping[323];
 
-	bool keysPressed[KEYS_AMOUNT];
-	bool keysHold[KEYS_AMOUNT];
-	bool keysReleased[KEYS_AMOUNT];
+	bool keysPressed  [KEYS_AMOUNT];
+	bool keysHold     [KEYS_AMOUNT];
+	bool keysReleased [KEYS_AMOUNT];
 
-	bool mouseButtonsPressed[BUTTONS_AMOUNT];
-	bool mouseButtonsHold[BUTTONS_AMOUNT];
-	bool mouseButtonsReleased[BUTTONS_AMOUNT];
+	bool mouseButtonsPressed  [BUTTONS_AMOUNT];
+	bool mouseButtonsHold     [BUTTONS_AMOUNT];
+	bool mouseButtonsReleased [BUTTONS_AMOUNT];
 
 	void PeekInputEvents();
 	void HandleKeyboardInput(SDL_Event* events, int count);

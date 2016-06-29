@@ -1,9 +1,18 @@
 ﻿#include "Input.h"
+#include <iostream>
 
 Input* Input::instance;
 
 Input::~Input()
 {
+}
+
+glm::vec2 Input::mouseCoords()
+{
+	int x, y;
+	SDL_GetMouseState(&x, &y);
+
+	return glm::vec2(x, y);
 }
 
 void Input::Start()
@@ -21,19 +30,13 @@ void Input::Update()
 	instance->ResetMouseButtons();
 
 	instance->PeekInputEvents();
-
-	/*SDL_Event e;
-	if (SDL_PollEvent(&e)) {
-		instance->HandleKeyboardInput(e);
-		instance->HandleMouseInput(e);
-	}*/
 }
 
 void Input::PeekInputEvents()
 {
 	SDL_Event mouseEvents[2];
 	SDL_Event keyboardEvents[2];
-
+	
 	SDL_PumpEvents();
 	int mouseCount    = SDL_PeepEvents(mouseEvents, 2, SDL_GETEVENT, SDL_MOUSEBUTTONDOWN, SDL_MOUSEBUTTONUP);
 	int keyboardCount = SDL_PeepEvents(keyboardEvents, 2, SDL_GETEVENT, SDL_KEYDOWN, SDL_KEYUP);

@@ -29,6 +29,8 @@ public:
 	bool IsBackCulling() { return backCullingEnabled; }
 	bool IsZBufferEnabled() { return zBufferEnabled; }
 
+	glm::vec3 ScreenToWorldCoordinates(const glm::vec2 screenCoords) const;
+
 	static Camera* mainCamera;
 private:
 	static SDL_Window*    window;
@@ -60,5 +62,6 @@ private:
 
 	void InitWindow();
 	void Clear();
+	void UpdateDirections();
 };
 

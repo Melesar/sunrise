@@ -49,6 +49,12 @@
     <ClCompile Include="Managers\Input.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Components\FreeMovement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilites\Utilites.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utilites\obj_loader.h" />
@@ -65,5 +71,7 @@
     <ClInclude Include="Managers\Application.h" />
     <ClInclude Include="Managers\Time.h" />
     <ClInclude Include="Managers\Input.h" />
+    <ClInclude Include="Components\FreeMovement.h" />
+    <ClInclude Include="Utilites\Utilites.h" />
   </ItemGroup>
 </Project>

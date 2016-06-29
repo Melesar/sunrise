@@ -17,22 +17,26 @@ public:
 
 	void Update() override;
 
+	glm::vec3 forward();
+	glm::vec3 up();
+	glm::vec3 left();
+
 	glm::vec3& position()
 	{
 		return pos;
 	}
 
-	void set_pos(const glm::vec3& highp_vec3)
+	void SetPosition(const glm::vec3& highp_vec3)
 	{
 		pos = highp_vec3;
 	}
 
-	glm::vec3& rot1()
+	glm::vec3& rotation()
 	{
 		return rot;
 	}
 
-	void set_rot(const glm::vec3& highp_vec3)
+	void SetRotation(const glm::vec3& highp_vec3)
 	{
 		rot = highp_vec3;
 	}
@@ -51,5 +55,7 @@ private:
 	glm::vec3 pos;
 	glm::vec3 rot;
 	glm::vec3 scale;
+
+	glm::mat4 rotationMatrix() const;
 };
 

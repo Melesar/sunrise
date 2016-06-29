@@ -145,6 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Components\FreeMovement.cpp" />
     <ClCompile Include="Managers\Application.cpp" />
     <ClCompile Include="Component model\Component.cpp" />
     <ClCompile Include="Component model\Scene.cpp" />
@@ -159,8 +160,10 @@
     <ClCompile Include="Utilites\stb_image.c" />
     <ClCompile Include="Data\Texture.cpp" />
     <ClCompile Include="Components\Transform.cpp" />
+    <ClCompile Include="Utilites\Utilites.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Components\FreeMovement.h" />
     <ClInclude Include="Managers\Application.h" />
     <ClInclude Include="Component model\Component.h" />
     <ClInclude Include="Component model\Scene.h" />
@@ -175,6 +178,7 @@
     <ClInclude Include="Utilites\stb_image.h" />
     <ClInclude Include="Data\Texture.h" />
     <ClInclude Include="Components\Transform.h" />
+    <ClInclude Include="Utilites\Utilites.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

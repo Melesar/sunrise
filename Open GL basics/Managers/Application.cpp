@@ -45,8 +45,4 @@ void Application::HandleEvent()
 	
 	int count =  SDL_PeepEvents(e, 1, SDL_GETEVENT, SDL_QUIT, SDL_QUIT);
 	isActive = count == 0;
-	/*if (SDL_PollEvent(&e))
-	{
-		isActive = e.type != SDL_QUIT;
-	}*/
 }
